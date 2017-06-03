@@ -68,7 +68,6 @@ public class DataPackingAdapter extends BaseAdapter {
         if(!productWrapper.isDummy()){
             productList.add(productWrapper);
         }
-        System.out.println("CEK ASD: "+productWrapper.getProduct_detail());
         this.notifyDataSetChanged();
     }
 
@@ -147,8 +146,10 @@ public class DataPackingAdapter extends BaseAdapter {
                         if(productList.size()>0){
                             if(productDetailIdList.size()!=productList.size()){
                                 productDetailIdList.add(position, productList.get(position).getProduct_detail().get(sBatchNumber.getSelectedItemPosition()).getId());
+                                System.out.println("CHECK ID: "+productList.get(position).getProduct_detail().get(sBatchNumber.getSelectedItemPosition()).getId());
                             }else {
                                 productDetailIdList.set(position, productList.get(position).getProduct_detail().get(sBatchNumber.getSelectedItemPosition()).getId());
+                                System.out.println("CHECK ID: "+productList.get(position).getProduct_detail().get(sBatchNumber.getSelectedItemPosition()).getId());
                             }
                         }
                     }

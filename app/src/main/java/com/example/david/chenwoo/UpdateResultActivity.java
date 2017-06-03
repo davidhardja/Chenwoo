@@ -122,7 +122,7 @@ public class UpdateResultActivity extends BaseActivity {
         sNamaProduk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                dataPackingAdapter.reset(listProductWrapper.get(sNomerPenjualan.getSelectedItemPosition()));
+                dataPackingAdapter.reset(listProductWrapper.get(sNamaProduk.getSelectedItemPosition()));
             }
 
             @Override
