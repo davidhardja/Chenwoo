@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cffffff"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:background="@color/c0091EF"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+
+        <TextView
+            android:id="@+id/tv_selamat_datang"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:text="@string/selamat_datang"
+            android:textColor="@color/cffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:background="@color/cffffff"
+        android:layout_width="match_parent"
+        android:layout_height="430dp">
+
+        <Button
+            android:id="@+id/b_keluar"
+            android:text="@string/keluar_aplikasi"
+            android:textColor="@color/cffffff"
+            android:background="@color/cFF0000"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="70dp"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/b_update"
+            android:text="@string/update_product"
+            android:textColor="@color/cffffff"
+            android:background="@color/c0091EF"
+            android:layout_marginBottom="40dp"
+            android:layout_above="@id/b_keluar"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="70dp"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/b_load"
+            android:text="@string/load_to_container"
+            android:textColor="@color/cffffff"
+            android:background="@color/c0091EF"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@id/b_update"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="70dp"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/b_tracking"
+            android:text="@string/tracking_product"
+            android:textColor="@color/cffffff"
+            android:background="@color/c0091EF"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@id/b_load"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="70dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_jabatan"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="SALES MANAGER"
+            android:layout_above="@id/b_tracking"
+            android:textColor="@color/c47525D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="012345668"
+            android:layout_above="@id/tv_jabatan"
+            android:textColor="@color/c47525D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/tv_id"
+            android:layout_marginBottom="20dp"
+            android:text="ALAN WALKER"
+            android:textColor="@color/c47525D" />
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:background="@drawable/ic_profile"
+        android:layout_marginTop="80dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/iv_profile" />
+
+
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background_login"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.david.chenwoo.LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:text="@string/setting"
+        android:textAllCaps="true"
+        android:textColor="@color/cffffff" />
+
+
+    <EditText
+        android:id="@+id/et_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="70dp"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_white_shadow"
+        android:padding="10dp"
+        android:textSize="15sp" />
+
+
+    <Button
+        android:id="@+id/b_save"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="70dp"
+        android:background="@color/c338733"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/save_setting"
+        android:textColor="@color/cffffff" />
+
+</RelativeLayout>
