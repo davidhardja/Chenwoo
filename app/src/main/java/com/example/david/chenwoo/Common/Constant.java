@@ -16,8 +16,8 @@ public class Constant {
     public static String APP_VERSION = "2.0.0";
 
     // ============== APIs =========================
-    //public static String API_URL = "https://cms.chenwoofishery.com/chenwoo/";
-    public static String API_URL = "https://project.tommyhost.net/chenwoo/";
+    public static String API_URL = "https://cms.chenwoofishery.com/chenwoo/";
+    //public static String API_URL = "https://project.tommyhost.net/chenwoo/";
 
     // ============== Response Code =========================
     public static final int API_SUCCESS = 200;

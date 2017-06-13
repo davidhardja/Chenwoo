@@ -79,21 +79,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:textSize="14sp"
                     android:id="@+id/tv_title_nomer_penjualan"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.7"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/nomer_penjualan"
                     android:textColor="@color/c888888" />
 
                 <FrameLayout
                     android:background="@drawable/bg_border_edit_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <Spinner
@@ -101,7 +99,7 @@
                         android:id="@+id/s_nomer_penjualan"
                         android:layout_width="match_parent"
                         android:popupBackground="@drawable/bg_border"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="30dp" />
 
                 </FrameLayout>
 
@@ -111,21 +109,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:textSize="14sp"
                     android:id="@+id/tv_title_nama_produk"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.7"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/nama_produk"
                     android:textColor="@color/c888888" />
 
                 <FrameLayout
                     android:background="@drawable/bg_border_edit_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <Spinner
@@ -133,7 +129,7 @@
                         android:id="@+id/s_nama_produk"
                         android:layout_width="match_parent"
                         android:popupBackground="@drawable/bg_border"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="30dp" />
 
                 </FrameLayout>
 
@@ -172,19 +168,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/ib_simpan"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/ic_save" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/ib_simpan"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:background="@drawable/ic_save" />-->
 
         <ImageButton
             android:id="@+id/ib_simpan_plus"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/ic_save_plus" />
+            android:background="@drawable/ic_save" />
     </LinearLayout>
 
     <com.victor.loading.rotate.RotateLoading

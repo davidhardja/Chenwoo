@@ -61,8 +61,8 @@ public class UpdateResultActivity extends BaseActivity {
 
     @InjectView(R.id.rotateloading)
     RotateLoading rotateLoading;
-    @InjectView(R.id.ib_simpan)
-    ImageButton ibSimpan;
+//    @InjectView(R.id.ib_simpan)
+//    ImageButton ibSimpan;
     @InjectView(R.id.ib_simpan_plus)
     ImageButton ibSimpanPlus;
 
@@ -194,59 +194,59 @@ public class UpdateResultActivity extends BaseActivity {
             }
         });
 
-        ibSimpan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sNamaProduk.getSelectedItemPosition() == sNamaProduk.getCount()) {
-                    showToast(getString(R.string.pilih_nama_produk));
-                }else if (sNomerPenjualan.getSelectedItemPosition() == nomerPenjualanAdapter.getCount()) {
-                    showToast(getString(R.string.pilih_nomor_penjualan));
-                }  else {
-                    rotateLoading.start();
-                    List<String> productDetailIdList = dataPackingAdapter.getProductDetailIdList();
-                    List<String> nettWeightList = dataPackingAdapter.getNettWeightList();
-                    List<String> brutWeightList = dataPackingAdapter.getBrutWeightList();
-                    List<String> quantityPerPackList = dataPackingAdapter.getQuantityPerPackList();
-
-                    Call<Wrapper> call = getService().postUpdatePackage(getSession().getAccessToken(), idPackage, productDetailIdList, nettWeightList, brutWeightList, quantityPerPackList, sNomerPenjualan.getSelectedItem().toString(), namaProdukAdapter.getProduckId(sNamaProduk.getSelectedItemPosition()));
-                    call.enqueue(new Callback<Wrapper>() {
-                        @Override
-                        public void onResponse(Call<Wrapper> call, Response<Wrapper> response) {
-                            if (response.isSuccessful()) {
-                                Constant.listProductWrapper=null;
-                                Constant.sales = null;
-                                Constant.positionListProductWrapper = -1;
-                                Constant.positionListSales = -1;
-                                if (response.body().getStatus() == Constant.UNAUTORIZED) {
-                                    logOut();
-                                } else if (response.body().getStatus() == Constant.DATA_NOT_FOUND) {
-                                    showDialog(false,getString(R.string.data_not_found));
-                                    //showToast(getString(R.string.data_not_found));
-                                    rotateLoading.stop();
-                                } else if (response.body().getStatus() == Constant.PARAMETER_MISSING) {
-                                    //showToast(getString(R.string.data_gagal_diubah));
-                                    showDialog(false,getString(R.string.data_gagal_diubah));
-                                    rotateLoading.stop();
-                                } else if (response.isSuccessful() && response.body().getStatus() != Constant.DATA_NOT_FOUND) {
-                                    showDialog(true,getString(R.string.data_berhasil_diupdate));
-                                    rotateLoading.stop();
-                                    //finish();
-                                }
-                            } else {
-                                rotateLoading.stop();
-                                showDialog(false,getString(R.string.data_gagal_diubah));
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Wrapper> call, Throwable t) {
-
-                        }
-                    });
-                }
-            }
-        });
+//        ibSimpan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (sNamaProduk.getSelectedItemPosition() == sNamaProduk.getCount()) {
+//                    showToast(getString(R.string.pilih_nama_produk));
+//                }else if (sNomerPenjualan.getSelectedItemPosition() == nomerPenjualanAdapter.getCount()) {
+//                    showToast(getString(R.string.pilih_nomor_penjualan));
+//                }  else {
+//                    rotateLoading.start();
+//                    List<String> productDetailIdList = dataPackingAdapter.getProductDetailIdList();
+//                    List<String> nettWeightList = dataPackingAdapter.getNettWeightList();
+//                    List<String> brutWeightList = dataPackingAdapter.getBrutWeightList();
+//                    List<String> quantityPerPackList = dataPackingAdapter.getQuantityPerPackList();
+//
+//                    Call<Wrapper> call = getService().postUpdatePackage(getSession().getAccessToken(), idPackage, productDetailIdList, nettWeightList, brutWeightList, quantityPerPackList, sNomerPenjualan.getSelectedItem().toString(), namaProdukAdapter.getProduckId(sNamaProduk.getSelectedItemPosition()));
+//                    call.enqueue(new Callback<Wrapper>() {
+//                        @Override
+//                        public void onResponse(Call<Wrapper> call, Response<Wrapper> response) {
+//                            if (response.isSuccessful()) {
+//                                Constant.listProductWrapper=null;
+//                                Constant.sales = null;
+//                                Constant.positionListProductWrapper = -1;
+//                                Constant.positionListSales = -1;
+//                                if (response.body().getStatus() == Constant.UNAUTORIZED) {
+//                                    logOut();
+//                                } else if (response.body().getStatus() == Constant.DATA_NOT_FOUND) {
+//                                    showDialog(false,getString(R.string.data_not_found));
+//                                    //showToast(getString(R.string.data_not_found));
+//                                    rotateLoading.stop();
+//                                } else if (response.body().getStatus() == Constant.PARAMETER_MISSING) {
+//                                    //showToast(getString(R.string.data_gagal_diubah));
+//                                    showDialog(false,getString(R.string.data_gagal_diubah));
+//                                    rotateLoading.stop();
+//                                } else if (response.isSuccessful() && response.body().getStatus() != Constant.DATA_NOT_FOUND) {
+//                                    showDialog(true,getString(R.string.data_berhasil_diupdate));
+//                                    rotateLoading.stop();
+//                                    //finish();
+//                                }
+//                            } else {
+//                                rotateLoading.stop();
+//                                showDialog(false,getString(R.string.data_gagal_diubah));
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<Wrapper> call, Throwable t) {
+//
+//                        }
+//                    });
+//                }
+//            }
+//        });
     }
 
     private void setView() {
