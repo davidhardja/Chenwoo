@@ -9,6 +9,7 @@
     <string name="tracking_product">Tracking Product</string>
     <string name="load_to_container">Load To Container</string>
     <string name="update_product">Packing Product</string>
+    <string name="cancel_loading">Cancel Loading</string>
     <string name="keluar_aplikasi">Keluar Aplikasi</string>
     <string name="data_tracking">Data Tracking</string>
     <string name="data_packing">Data Packing</string>
@@ -45,7 +46,7 @@
     <string name="pilih_nama_produk">-Pilih Nama Produk-</string>
     <string name="pilih_nomor_penjualan">-Pilih Nomor Penjualan-</string>
     <string name="pilih_batch_number">-Pilih Batch Number-</string>
-    <string name="version">Version: 1.8</string>
+    <string name="version">Version: 1.9</string>
 
 
 </resources>

@@ -26,12 +26,12 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".TrackingScannerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".TrackingResultActivity"
@@ -40,6 +40,11 @@
 
         <activity
             android:name=".LoadScannerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".CancelScannerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 

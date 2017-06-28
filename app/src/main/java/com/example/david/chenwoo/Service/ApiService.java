@@ -36,6 +36,13 @@ public interface ApiService {
     );
 
     @FormUrlEncoded
+    @POST("api/cancel")
+    Call<Wrapper> cancelPackage(
+            @Header("token") String token,
+            @Field("package_no") String package_no
+    );
+
+    @FormUrlEncoded
     @POST("api/viewpackage")
     Call<Wrapper> detailPackage(
             @Header("token") String token,
@@ -52,17 +59,6 @@ public interface ApiService {
             @Header("token") String token,
             @Query("package_no") String package_no
     );
-
-//    @FormUrlEncoded
-//    @POST("api/updatepackage")
-//    Call<Wrapper> postUpdatePackage(
-//            @Header("token") String token,
-//            @Field("id") String id,
-//            @Field("product_detail_id") String product_detail_id,
-//            @Field("nett_weight") String nett_weight,
-//            @Field("brut_weight") String brut_weight,
-//            @Field("quantity_per_pack") String quantity_per_pack
-//    );
 
     @FormUrlEncoded
     @POST("api/updatepackage")

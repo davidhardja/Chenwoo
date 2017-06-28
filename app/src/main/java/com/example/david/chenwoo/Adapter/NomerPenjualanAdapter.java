@@ -1,6 +1,7 @@
 package com.example.david.chenwoo.Adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class NomerPenjualanAdapter extends ArrayAdapter {
 
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.spinner_batchnumber, parent, false);
+        View row = inflater.inflate(R.layout.simple_spinner_item, parent, false);
         TextView label = (TextView) row.findViewById(R.id.tv_text);
 
         if (position == getCount()) {

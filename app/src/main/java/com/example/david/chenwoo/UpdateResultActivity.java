@@ -1,6 +1,7 @@
 package com.example.david.chenwoo;
 
 import android.app.Dialog;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.example.david.chenwoo.Database.Data.Sale;
 import com.example.david.chenwoo.Database.Data.Wrapper;
 import com.victor.loading.rotate.RotateLoading;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,12 +91,12 @@ public class UpdateResultActivity extends BaseActivity {
         dataPackingAdapter = new DataPackingAdapter(UpdateResultActivity.this, productDetails);
         rvDataPacking.setLayoutManager(new LinearLayoutManager(UpdateResultActivity.this, LinearLayoutManager.VERTICAL, false));
         rvDataPacking.setAdapter(dataPackingAdapter);
-
         dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.dialog_alert);
 
         setView();
         setListener();
+
 
         rotateLoading.start();
     }
@@ -107,9 +109,9 @@ public class UpdateResultActivity extends BaseActivity {
                     listProductWrapper = sales.get(i).getProduct();
                     //System.out.println("CHECK SIZE PRODUCT: "+sales.get(i).getProduct().get(0).getProductDetailList().get(0).getBatch_number());
                     namaProdukAdapter.reset(sales.get(i).getProduct());
-                    if(Constant.positionListProductWrapper!=-1){
-                        sNamaProduk.setSelection(Constant.positionListProductWrapper);
-                    }
+//                    if(Constant.positionListProductWrapper!=-1){
+//                        sNamaProduk.setSelection(Constant.positionListProductWrapper);
+//                    }
                 }
             }
 
@@ -159,10 +161,13 @@ public class UpdateResultActivity extends BaseActivity {
                         @Override
                         public void onResponse(Call<Wrapper> call, Response<Wrapper> response) {
                             if (response.isSuccessful()) {
-                                Constant.listProductWrapper = listProductWrapper;
-                                Constant.sales = sales;
-                                Constant.positionListProductWrapper = sNamaProduk.getSelectedItemPosition();
-                                Constant.positionListSales = sNomerPenjualan.getSelectedItemPosition();
+//                                Constant.listProductWrapper = listProductWrapper;
+//                                Constant.sales = sales;
+//                                Constant.positionListProductWrapper = sNamaProduk.getSelectedItemPosition();
+//                                Constant.positionListSales = sNomerPenjualan.getSelectedItemPosition();
+
+                                Constant.lastIdProductSelected = sNomerPenjualan.getSelectedItem().toString();
+
                                 if (response.body().getStatus() == Constant.UNAUTORIZED) {
                                     logOut();
                                 } else if (response.body().getStatus() == Constant.DATA_NOT_FOUND) {
@@ -250,6 +255,37 @@ public class UpdateResultActivity extends BaseActivity {
     }
 
     private void setView() {
+//        try {
+//            Field popup = Spinner.class.getDeclaredField("mPopup");
+//            popup.setAccessible(true);
+//
+//            // Get private mPopup member variable and try cast to ListPopupWindow
+//            android.widget.ListPopupWindow popupWindow = (android.widget.Spinner) popup.get(sNomerPenjualan);
+//
+//            // Set popupWindow height to 500px
+//            popupWindow.setHeight(30);
+//        }
+//        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+//            System.out.println("ERROR FAILED "+ e.getMessage());
+//            // silently fail...
+//        }
+//
+//        try {
+//            Field popup = Spinner.class.getDeclaredField("mPopup");
+//            popup.setAccessible(true);
+//
+//            // Get private mPopup member variable and try cast to ListPopupWindow
+//            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(sNamaProduk);
+//
+//            // Set popupWindow height to 500px
+//            popupWindow.setHeight(30);
+//        }
+//        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+//            System.out.println("ERROR FAILED "+ e.getMessage());
+//            // silently fail...
+//        }
+
+
         Call<Wrapper> call = getService().getUpdatePackage(getSession().getAccessToken(), this.packageNo);
         call.enqueue(new Callback<Wrapper>() {
             @Override
@@ -272,15 +308,15 @@ public class UpdateResultActivity extends BaseActivity {
 //                            listProductWrapper.add(new ProductWrapper(true));
 //                        }
 
-                        if(Constant.sales!=null){
-                            sales = Constant.sales;
-                        }else {
+//                        if(Constant.sales!=null){
+//                            sales = Constant.sales;
+//                        }else {
                             sales = response.body().getData().getSale();
                             sales.add(new Sale(true));
                             //System.out.println("ASDASD: "+ response.body().getData().getSale().get(0).getProduct().get(0).getProductDetailList().get(0).getBatch_number() );
-                        }
-                        nomerPenjualanAdapter = new NomerPenjualanAdapter(UpdateResultActivity.this, R.layout.spinner_batchnumber, sales);
-                        namaProdukAdapter = new NameProductAdapter(UpdateResultActivity.this, R.layout.spinner_batchnumber, listProductWrapper);
+                        //}
+                        nomerPenjualanAdapter = new NomerPenjualanAdapter(UpdateResultActivity.this, R.layout.simple_spinner_item, sales);
+                        namaProdukAdapter = new NameProductAdapter(UpdateResultActivity.this, R.layout.simple_spinner_item, listProductWrapper);
                         sNomerPenjualan.setAdapter(nomerPenjualanAdapter);
                         sNamaProduk.setAdapter(namaProdukAdapter);
 
@@ -290,12 +326,27 @@ public class UpdateResultActivity extends BaseActivity {
 //                            sNamaProduk.setSelection(namaProdukAdapter.getCount());
 //                        }
 
-
-                        if(Constant.positionListSales!=-1){
-                            sNomerPenjualan.setSelection(Constant.positionListSales);
-                        }else{
+                        if(Constant.lastIdProductSelected.matches("-1")){
                             sNomerPenjualan.setSelection(nomerPenjualanAdapter.getCount());
+                        }else{
+                            int position = nomerPenjualanAdapter.getCount();
+                            System.out.println("CHECK ID SALES0: "+sales.size());
+                            for(int i=0;i<sales.size();i++){
+                                if(sales.get(i).getId()!=null){
+                                    if(Constant.lastIdProductSelected.matches(sales.get(i).getId())){
+                                        position = i;
+                                    }
+                                }
+                            }
+                            sNomerPenjualan.setSelection(position);
                         }
+
+
+//                        if(Constant.positionListSales!=-1){
+//                            sNomerPenjualan.setSelection(Constant.positionListSales);
+//                        }else{
+//                            sNomerPenjualan.setSelection(nomerPenjualanAdapter.getCount());
+//                        }
 
 //                        productDetails.add(listProductWrapper.get(0));
                         dataPackingAdapter.notifyDataSetChanged();

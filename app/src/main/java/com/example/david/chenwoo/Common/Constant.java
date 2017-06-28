@@ -44,5 +44,7 @@ public class Constant {
     public static int positionListProductWrapper = -1;
     public static int positionListSales = -1;
 
+    public static String lastIdProductSelected = "-1";
+
 
 }

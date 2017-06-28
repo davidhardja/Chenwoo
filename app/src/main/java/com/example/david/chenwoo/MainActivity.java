@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.david.chenwoo.Common.Constant;
 import com.example.david.chenwoo.Database.Data.Wrapper;
 
@@ -23,7 +22,7 @@ import retrofit2.Response;
  * Created by David on 01/04/2017.
  */
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
 
     @InjectView(R.id.tv_selamat_datang)
     TextView tvSelamatDatang;
@@ -43,24 +42,28 @@ public class MainActivity extends BaseActivity{
     ImageView ivProfile;
     @InjectView(R.id.b_update)
     Button bUpdate;
+    @InjectView(R.id.b_cancel)
+    Button bCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-        customizeFontsDefault(tvId,tvJabatan,tvSelamatDatang,tvNama,bKeluar,bLoad,bTracking,bUpdate);
+        customizeFontsDefault(tvId, tvJabatan, tvSelamatDatang, tvNama, bKeluar, bLoad, bTracking, bUpdate, bCancel);
         setListener();
         setView();
     }
 
-    private void setView(){
-        try{
+    private void setView() {
+        try {
             Glide.with(MainActivity.this).load(getSession().getProfile()).bitmapTransform(new CropCircleTransformation(MainActivity.this)).into(ivProfile);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
         tvId.setText(getSession().getNik());
         tvJabatan.setText(getSession().getJabatan());
         tvNama.setText(getSession().getName());
+        System.out.println("CHECK TOKEN0: " + getSession().getAccessToken());
     }
 
     @Override
@@ -70,9 +73,9 @@ public class MainActivity extends BaseActivity{
         call.enqueue(new Callback<Wrapper>() {
             @Override
             public void onResponse(Call<Wrapper> call, Response<Wrapper> response) {
-                if(response.body().getStatus()== Constant.UNAUTORIZED){
+                if (response.body().getStatus() == Constant.UNAUTORIZED) {
                     logOut();
-                }else if(response.isSuccessful()){
+                } else if (response.isSuccessful()) {
                     getSession().setJabatan(response.body().getData().getJabatan());
                     getSession().setNik(response.body().getData().getNik());
                     getSession().setProfile(response.body().getData().getPp());
@@ -88,14 +91,22 @@ public class MainActivity extends BaseActivity{
         });
     }
 
-    private void setListener(){
-
+    private void setListener() {
         bKeluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 getSession().clearData();
+                finish();
+            }
+        });
+
+        bCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CancelScannerActivity.class);
+                startActivity(intent);
                 finish();
             }
         });

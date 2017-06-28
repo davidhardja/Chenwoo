@@ -37,8 +37,9 @@ public class SessionManagement {
         return theAccessToken;
     }
 
-    public void setAccessToken(String username) {
-        editor.putString(KEY_ACCESS_TOKEN, username);
+    public void setAccessToken(String token) {
+        System.out.println("CHECK TOKEN SET: "+token);
+        editor.putString(KEY_ACCESS_TOKEN, token);
         editor.commit();
     }
 
